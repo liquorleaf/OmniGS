@@ -52,6 +52,7 @@ add_library(simple_knn SHARED
     third_party/simple-knn/simple_knn.h
     third_party/simple-knn/spatial.cu
     third_party/simple-knn/spatial.h)
+set_target_properties(simple_knn PROPERTIES CUDA_ARCHITECTURES "120")
 # target_compile_features(simple_knn PUBLIC cxx_std_17)
 target_link_libraries(simple_knn "${TORCH_LIBRARIES}")
 
@@ -73,7 +74,7 @@ add_library(cuda_rasterizer SHARED
     cuda_rasterizer/rasterizer_impl.cu
     cuda_rasterizer/rasterizer_impl.h
     cuda_rasterizer/stereo_vision.h)
-set_target_properties(cuda_rasterizer PROPERTIES CUDA_ARCHITECTURES "75;86")
+set_target_properties(cuda_rasterizer PROPERTIES CUDA_ARCHITECTURES "120")
 # target_compile_features(cuda_rasterizer PUBLIC cxx_std_17)
 target_include_directories(cuda_rasterizer PRIVATE
     ${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES})

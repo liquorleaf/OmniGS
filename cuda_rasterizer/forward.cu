@@ -151,8 +151,8 @@ __device__ float3 computeCov2DLonlat(const float3& mean, const int width, const 
 	float trtr = trxztrxz + t.y * t.y;
 	float trtr_inv = 1.0f / (trtr + 0.0000001f);
 
-	float W_div_2pi = width * 0.5f * M_1_PIf32;
-	float H_div_pi = height * M_1_PIf32;
+	float W_div_2pi = width * 0.5f * (float)M_1_PI;
+	float H_div_pi = height * (float)M_1_PI;
 
 	float dpx_dtx = W_div_2pi * t.z * trxztrxz_inv;
 	float dpx_dtz = -W_div_2pi * t.x * trxztrxz_inv;

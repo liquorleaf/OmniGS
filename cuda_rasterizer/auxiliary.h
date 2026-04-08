@@ -227,8 +227,8 @@ __forceinline__ __device__ float2 point3ToLonlatPixel(const float3& pt, const in
 	float lon = atan2f(pt.x, pt.z);
 	float lat = asinf(pt.y * inv_r);
 	float2 pix = {
-		(lon * M_1_PIf32 + 1.0f) * (width >> 1),
-		(lat * M_2_PIf32 + 1.0f) * (height >> 1)
+		(lon * (float)M_1_PI + 1.0f) * (width >> 1),
+		(lat * (float)M_2_PI + 1.0f) * (height >> 1)
 	};
 	return pix;
 }
@@ -241,8 +241,8 @@ __forceinline__ __device__ float2 point3ToLonlatScreen(const float4& pt_and_r)
 	float lat = asinf(pt_and_r.y * inv_r);
 
 	float2 scr = {
-		lon * M_1_PIf32,
-		lat * M_2_PIf32
+		lon * (float)M_1_PI,
+		lat * (float)M_2_PI
 	};
 	return scr;
 }
